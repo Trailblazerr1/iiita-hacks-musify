@@ -19,7 +19,12 @@ word_model = gensim.models.Word2Vec.load_word2vec_format(os.path.join(BASE, 'vec
 genres = ['abstract', 'accordion', 'afrikaans', 'afrobeat', 'ambient', 'andean', 'anime', 'axe', 'balearic', 'banda', 'bangla', 'barbershop', 'baroque', 'bassline', 'bebop', 'bemani', 'bhangra', 'bluegrass', 'blues', 'bolero', 'boogaloo', 'bounce', 'breakbeat', 'breaks', 'britpop', 'broadway', 'byzantine', 'cabaret', 'cajun', 'calypso', 'cantopop', 'capoeira', 'carnatic', 'ccm', 'cello', 'celtic', 'chanson', 'choral', 'choro', 'christmas', 'clarinet', 'classical', 'comedy', 'comic', 'commons', 'consort', 'corrosion', 'country', 'dancehall', 'demoscene', 'desi', 'didgeridoo', 'disco', 'dixieland', 'downtempo', 'drama', 'drone', 'dub', 'ebm', 'edm', 'electro', 'electronic', 'electronica', 'emo', 'environmental', 'eurovision', 'exotica', 'experimental', 'fado', 'fake', 'filmi', 'flamenco', 'folk', 'footwork', 'freestyle', 'funk', 'gabba', 'galego', 'gamelan', 'glitch', 'gospel', 'grime', 'grindcore', 'grunge', 'guidance', 'hardcore', 'harp', 'hawaiian', 'healing', 'hollywood', 'house', 'idol', 'industrial', 'jazz', 'jerk', 'judaica', 'juggalo', 'jungle', 'klezmer', 'latin', 'lds', 'lilith', 'liturgical', 'lounge', 'lowercase', 'maghreb', 'magyar', 'mallet', 'mambo', 'medieval', 'meditation', 'melancholia', 'merengue', 'metal', 'metalcore', 'minimal', 'mizrahi', 'monastic', 'morna', 'motivation', 'motown', 'neoclassical', 'nepali', 'neurofunk', 'ninja', 'noise', 'nursery', 'oi', 'opera', 'oratory', 'orchestral', 'outsider']
 
 def home(request):
-    """Renders the home page."""
+    return render(request, 'app/home.html')
+
+def Developers(request):
+    return render(request, 'app/Developers.html')
+
+def playlist(request):
     assert isinstance(request, HttpRequest)
     if request.method == 'GET':
         form = PostForm()
@@ -46,7 +51,7 @@ def home(request):
                 embedLink = "https://embed.spotify.com/?uri="+uri
             return render(
                 request,
-                'app/index.html',
+                'app/playlist.html',
                 {
                     'form': form,
                     'imgsrc': imgURL,
@@ -57,7 +62,7 @@ def home(request):
             )
     return render(
         request,
-        'app/index.html',
+        'app/playlist.html',
         {
             'form': form,
             'imgsrc': '',
@@ -67,33 +72,6 @@ def home(request):
         }
     )
 
-def contact(request):
-    """Renders the contact page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'app/contact.html',
-        context_instance = RequestContext(request,
-        {
-            'title':'Contact',
-            'message':'Your contact page.',
-            'year':datetime.now().year,
-        })
-    )
-
-def about(request):
-    """Renders the about page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'app/about.html',
-        context_instance = RequestContext(request,
-        {
-            'title':'About',
-            'message':'Your application description page.',
-            'year':datetime.now().year,
-        })
-    )
 
 
 def imgscore(words,genres):

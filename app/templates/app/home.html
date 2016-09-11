@@ -57,7 +57,7 @@
     <div id="bg-fullsize" data-src="{% static 'img/party.jpg' %}"></div>
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-            <form id="search-bar-form" class="searchBarNew stacked "  action="/index/" method="POST"   >
+            <form id="search-bar-form" class="searchBarNew stacked "  action="/playlist/" method="POST"   >
                 {% csrf_token %}
                 <div class="searchbar form-group col-sm-12 col-md-12">
                      <input name="content" class="form-control destination" type="text" placeholder="Image-Url" data-prefill-with-destination="false" autofocus/>
@@ -65,7 +65,7 @@
                 </div> 
                 <div class="form-group col-md-offset-4 col-sm-offset-4 col-sm-4 col-md-4 search-button-wrapper">
                     <button class="btn btn--cta btn--lg btn--block" type="submit">Find Songs</button>
-		</div>
+                </div>
             </form>
         </div>
     </div>
@@ -85,7 +85,7 @@
             <p>“I believe when life gives you lemons, you should make lemonade...and try to find someone whose life has given them vodka, and have a party.”  </p><p style="text-align:center">
             <footer style="font-size:17px">   ― Ron White  </footer>
           </blockquote>
-      </div>
+      </div> 
       <br>
       <br>
         <h4>Website Disclaimer</h4>
@@ -97,6 +97,7 @@
 <br>
      <p style="text-align:center;">Copyright © NullVector</p>
     </div>
+    </section>
     </section>
 </body>
 
